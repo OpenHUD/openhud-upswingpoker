@@ -137,7 +137,7 @@ const raiseFirstInRange = (players, position) => {
 const generateTip = (game, bb, seats, community) => {
     const tip = { players: {} };
 
-    if (game.type === Games.TexasHoldem) {
+    if (game.type === Games.TexasHoldem && game.bet === Bets.NoLimit) {
         const mySeatId = seats.findIndex(seat => seat.isMe);
         if (mySeatId !== -1) {
             const mySeat = seats[mySeatId];
