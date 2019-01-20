@@ -125,6 +125,7 @@ const tables = [utg, utgPlus1, utgPlus2, lojack, hijack, cutoff, button, sb];
 
 //////////////////////////////////////////////////
 
+const { Games, Bets } = require('@openhud/api');
 const { represent, representRange } = require('@openhud/helpers');
 
 const raiseFirstInRange = (players, position) => {
@@ -136,7 +137,7 @@ const raiseFirstInRange = (players, position) => {
 const generateTip = (game, bb, seats, community) => {
     const tip = { players: {} };
 
-    if (game === 'nlh') {
+    if (game.type === Games.TexasHoldem) {
         const mySeatId = seats.findIndex(seat => seat.isMe);
         if (mySeatId !== -1) {
             const mySeat = seats[mySeatId];
@@ -209,9 +210,13 @@ app.post('/', (request, response) => {
 });
 
 const metadata = {
-    title: 'Upswing Poker Preflop Guide',
+    title: 'Upswing Poker',
     description: 'Upswing Poker Preflop Guide, Holdem Raising-First-In (https://upswingpoker.com/wp-content/uploads/2018/02/Preflop-Guide-for-RFI-v21-1.pdf)',
-    games: ['nlh'],
+    games: [{
+        type: Games.TexasHoldem,
+        bet: Bets.NoLimit,
+        format: '*'
+    }],
     author: {
         name: "Danny Leshem",
         email: "dleshem@gmail.com"
