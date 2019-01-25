@@ -1201,7 +1201,7 @@ const generateTip = (game, bb, seats, community) => {
                     tip.players[mySeat.playerName] = `${myHandRep} should ${firstInAction} if first in.`;
                 }
             } else {
-                const raiseAction = getRaiseAction(players, index, raiserPosition);
+                const raiseAction = getRaiseAction(players, index, raiserPosition, myHandRep);
                 if (raiseAction) {
                     tip.players[mySeat.playerName] = `${myHandRep} should ${raiseAction} when raised like this.`;
                 }
