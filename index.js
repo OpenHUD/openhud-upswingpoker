@@ -1123,7 +1123,7 @@ const getRaiseAction = (players, position, raiserPosition, handRep) => {
         const seat = seats[position];
         const tables = Raise.get(seat);
         if (tables) {
-            const raiserSeat = PlayersToSeats.get(raiserPosition);
+            const raiserSeat = seats[raiserPosition];
             const table = tables.get(raiserSeat);
             if (table) {
                 return getAction(table, handRep);
