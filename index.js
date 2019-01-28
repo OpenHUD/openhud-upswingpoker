@@ -1078,6 +1078,753 @@ const Raise = new Map([
     ])]
 ]);
 
+const ThreeBet = new Map([
+    [Seats.SB, new Map([
+        [Seats.BB, new Map([
+            [Actions.Raise, new Set([
+                'AA', 'KK', 'QQ', 'JJ',
+                'AKs', 'A5s', 'A4s', 'A3s', 'A2s',
+                'AKo'
+            ])],
+            [Actions.RaiseCall, new Set([
+                'K8s', 'K7s', 'K6s'
+            ])],
+            [Actions.Call, new Set([
+                'TT', '99', '88', '77', '66', '55', '44', '33',
+                'AQs', 'AJs', 'ATs', 'A9s', 'A8s', 'A7s', 'A6s',
+                'KQs', 'KJs', 'KTs', 'K9s',
+                'QJs', 'QTs', 'Q9s',
+                'JTs', 'J9s',
+                'T9s', 'T8s',
+                '98s', '97s',
+                '87s',
+                '76s',
+                '65s',
+                '54s',
+                'AQo', 'AJo', 'ATo',
+                'KQo',
+                'KJo',
+                'QJo'
+            ])]
+        ])]
+    ])],
+    [Seats.UTG, new Map([
+        [Seats.SB, new Map([
+            [Actions.Raise, new Set([
+                'AA',
+                'ATs'
+            ])],
+            [Actions.RaiseCall, new Set([
+                'KK',
+                'AKs'
+            ])],
+            [Actions.RaiseFold, new Set([
+                'AQo'
+            ])],
+            [Actions.Call, new Set([
+                'QQ', 'JJ', 'TT', '99', '88', '77',
+                'AQs', 'AJs',
+                'KQs', 'KJs',
+                'QJs',
+                'AKo'
+            ])]
+        ])],
+        [Seats.BB, new Map([
+            [Actions.Raise, new Set([
+                'AA',
+                'ATs'
+            ])],
+            [Actions.RaiseCall, new Set([
+                'KK',
+                'AKs'
+            ])],
+            [Actions.RaiseFold, new Set([
+                'AQo'
+            ])],
+            [Actions.Call, new Set([
+                'QQ', 'JJ', 'TT', '99', '88', '77',
+                'AQs', 'AJs',
+                'KQs', 'KJs',
+                'QJs',
+                'AKo'
+            ])]
+        ])],
+        [Seats.UTG1, new Map([
+            [Actions.Raise, new Set([
+                'AA',
+                'ATs'
+            ])],
+            [Actions.RaiseCall, new Set([
+                'KK'
+            ])],
+            [Actions.Call, new Set([
+                'QQ', 'JJ', 'TT', '99',
+                'AKs', 'AQs', 'AJs',
+                'KQs',
+                'AKo'
+            ])]
+        ])],
+        [Seats.UTG2, new Map([
+            [Actions.Raise, new Set([
+                'AA',
+                'ATs'
+            ])],
+            [Actions.RaiseCall, new Set([
+                'KK'
+            ])],
+            [Actions.Call, new Set([
+                'QQ', 'JJ', 'TT', '99',
+                'AKs', 'AQs', 'AJs',
+                'KQs',
+                'AKo'
+            ])]
+        ])],
+        [Seats.LJ, new Map([
+            [Actions.Raise, new Set([
+                'AA',
+                'ATs'
+            ])],
+            [Actions.RaiseCall, new Set([
+                'KK'
+            ])],
+            [Actions.Call, new Set([
+                'QQ', 'JJ', 'TT', '99', '88',
+                'AKs', 'AQs', 'AJs',
+                'KQs',
+                'AKo'
+            ])]
+        ])],
+        [Seats.HJ, new Map([
+            [Actions.Raise, new Set([
+                'AA',
+                'ATs'
+            ])],
+            [Actions.RaiseCall, new Set([
+                'KK',
+                'AKs'
+            ])],
+            [Actions.RaiseFold, new Set([
+                'AQo'
+            ])],
+            [Actions.Call, new Set([
+                'QQ', 'JJ', 'TT', '99', '88',
+                'AQs', 'AJs',
+                'KQs',
+                'AKo'
+            ])]
+        ])],
+        [Seats.CO, new Map([
+            [Actions.Raise, new Set([
+                'AA',
+                'ATs'
+            ])],
+            [Actions.RaiseCall, new Set([
+                'KK',
+                'AKs'
+            ])],
+            [Actions.RaiseFold, new Set([
+                'AQo'
+            ])],
+            [Actions.Call, new Set([
+                'QQ', 'JJ', 'TT', '99', '88',
+                'AQs', 'AJs',
+                'KQs',
+                'AKo'
+            ])]
+        ])],
+        [Seats.BTN, new Map([
+            [Actions.Raise, new Set([
+                'AA',
+                'ATs'
+            ])],
+            [Actions.RaiseCall, new Set([
+                'KK',
+                'AKs'
+            ])],
+            [Actions.RaiseFold, new Set([
+                'AQo'
+            ])],
+            [Actions.Call, new Set([
+                'QQ', 'JJ', 'TT', '99', '88', '77',
+                'AQs', 'AJs',
+                'KQs',
+                'AKo'
+            ])]
+        ])]
+    ])],
+    [Seats.UTG1, new Map([
+        [Seats.SB, new Map([
+            [Actions.Raise, new Set([
+                'AA',
+                'ATs'
+            ])],
+            [Actions.RaiseCall, new Set([
+                'KK',
+                'AKs'
+            ])],
+            [Actions.RaiseFold, new Set([
+                'AQo'
+            ])],
+            [Actions.Call, new Set([
+                'QQ', 'JJ', 'TT', '99', '88', '77',
+                'AQs', 'AJs',
+                'KQs', 'KJs',
+                'QJs',
+                'AKo'
+            ])]
+        ])],
+        [Seats.BB, new Map([
+            [Actions.Raise, new Set([
+                'AA',
+                'ATs'
+            ])],
+            [Actions.RaiseCall, new Set([
+                'KK',
+                'AKs'
+            ])],
+            [Actions.RaiseFold, new Set([
+                'AQo'
+            ])],
+            [Actions.Call, new Set([
+                'QQ', 'JJ', 'TT', '99', '88', '77',
+                'AQs', 'AJs',
+                'KQs', 'KJs',
+                'QJs',
+                'AKo'
+            ])]
+        ])],
+        [Seats.UTG2, new Map([
+            [Actions.Raise, new Set([
+                'AA',
+                'ATs'
+            ])],
+            [Actions.RaiseCall, new Set([
+                'KK'
+            ])],
+            [Actions.Call, new Set([
+                'QQ', 'JJ', 'TT', '99',
+                'AKs', 'AQs', 'AJs',
+                'KQs',
+                'AKo'
+            ])]
+        ])],
+        [Seats.LJ, new Map([
+            [Actions.Raise, new Set([
+                'AA',
+                'ATs'
+            ])],
+            [Actions.RaiseCall, new Set([
+                'KK'
+            ])],
+            [Actions.Call, new Set([
+                'QQ', 'JJ', 'TT', '99', '88',
+                'AKs', 'AQs', 'AJs',
+                'KQs',
+                'AKo'
+            ])]
+        ])],
+        [Seats.HJ, new Map([
+            [Actions.Raise, new Set([
+                'AA',
+                'ATs'
+            ])],
+            [Actions.RaiseCall, new Set([
+                'KK',
+                'AKs'
+            ])],
+            [Actions.RaiseFold, new Set([
+                'AQo'
+            ])],
+            [Actions.Call, new Set([
+                'QQ', 'JJ', 'TT', '99', '88',
+                'AQs', 'AJs',
+                'KQs',
+                'AKo'
+            ])]
+        ])],
+        [Seats.CO, new Map([
+            [Actions.Raise, new Set([
+                'AA',
+                'ATs'
+            ])],
+            [Actions.RaiseCall, new Set([
+                'KK',
+                'AKs'
+            ])],
+            [Actions.RaiseFold, new Set([
+                'AQo'
+            ])],
+            [Actions.Call, new Set([
+                'QQ', 'JJ', 'TT', '99', '88',
+                'AQs', 'AJs',
+                'KQs',
+                'AKo'
+            ])]
+        ])],
+        [Seats.BTN, new Map([
+            [Actions.Raise, new Set([
+                'AA',
+                'ATs'
+            ])],
+            [Actions.RaiseCall, new Set([
+                'KK',
+                'AKs'
+            ])],
+            [Actions.RaiseFold, new Set([
+                'AQo'
+            ])],
+            [Actions.Call, new Set([
+                'QQ', 'JJ', 'TT', '99', '88', '77',
+                'AQs', 'AJs',
+                'KQs',
+                'AKo'
+            ])]
+        ])]
+    ])],
+    [Seats.UTG2, new Map([
+        [Seats.SB, new Map([
+            [Actions.Raise, new Set([
+                'AA',
+                'ATs'
+            ])],
+            [Actions.RaiseCall, new Set([
+                'KK',
+                'AKs'
+            ])],
+            [Actions.RaiseFold, new Set([
+                'AQo'
+            ])],
+            [Actions.Call, new Set([
+                'QQ', 'JJ', 'TT', '99', '88', '77', '66',
+                'AQs', 'AJs',
+                'KQs', 'KJs',
+                'QJs',
+                'JTs',
+                'AKo'
+            ])]
+        ])],
+        [Seats.BB, new Map([
+            [Actions.Raise, new Set([
+                'AA',
+                'ATs'
+            ])],
+            [Actions.RaiseCall, new Set([
+                'KK',
+                'AKs'
+            ])],
+            [Actions.RaiseFold, new Set([
+                'AQo'
+            ])],
+            [Actions.Call, new Set([
+                'QQ', 'JJ', 'TT', '99', '88', '77', '66',
+                'AQs', 'AJs',
+                'KQs', 'KJs',
+                'QJs',
+                'JTs',
+                'AKo'
+            ])]
+        ])],
+        [Seats.LJ, new Map([
+            [Actions.Raise, new Set([
+                'AA',
+                'ATs'
+            ])],
+            [Actions.RaiseCall, new Set([
+                'KK',
+                'AKs'
+            ])],
+            [Actions.RaiseFold, new Set([
+                'AQo'
+            ])],
+            [Actions.Call, new Set([
+                'QQ', 'JJ', 'TT', '99', '88',
+                'AQs', 'AJs',
+                'KQs',
+                'AKo'
+            ])]
+        ])],
+        [Seats.HJ, new Map([
+            [Actions.Raise, new Set([
+                'AA',
+                'ATs'
+            ])],
+            [Actions.RaiseCall, new Set([
+                'KK',
+                'AKs'
+            ])],
+            [Actions.RaiseFold, new Set([
+                'AQo'
+            ])],
+            [Actions.Call, new Set([
+                'QQ', 'JJ', 'TT', '99', '88',
+                'AQs', 'AJs',
+                'KQs',
+                'AKo'
+            ])]
+        ])],
+        [Seats.CO, new Map([
+            [Actions.Raise, new Set([
+                'AA',
+                'ATs'
+            ])],
+            [Actions.RaiseCall, new Set([
+                'KK',
+                'AKs'
+            ])],
+            [Actions.RaiseFold, new Set([
+                'AQo'
+            ])],
+            [Actions.Call, new Set([
+                'QQ', 'JJ', 'TT', '99', '88', '77',
+                'AQs', 'AJs',
+                'KQs',
+                'QJs',
+                'AKo'
+            ])]
+        ])],
+        [Seats.BTN, new Map([
+            [Actions.Raise, new Set([
+                'AA',
+                'ATs'
+            ])],
+            [Actions.RaiseCall, new Set([
+                'KK',
+                'AKs'
+            ])],
+            [Actions.RaiseFold, new Set([
+                'AQo'
+            ])],
+            [Actions.Call, new Set([
+                'QQ', 'JJ', 'TT', '99', '88', '77',
+                'AQs', 'AJs',
+                'KQs',
+                'QJs',
+                'JTs',
+                'AKo'
+            ])]
+        ])]
+    ])],
+    [Seats.LJ, new Map([
+        [Seats.SB, new Map([
+            [Actions.Raise, new Set([
+                'AA', 'KK',
+                'AKs'
+            ])],
+            [Actions.RaiseCall, new Set([
+                'QQ',
+                'AKo'
+            ])],
+            [Actions.RaiseFold, new Set([
+                'A9s', 'A5s', 'A4s',
+                'AQo'
+            ])],
+            [Actions.Call, new Set([
+                'JJ', 'TT', '99', '88', '77', '66',
+                'AQs', 'AJs', 'ATs',
+                'KQs', 'KJs',
+                'QJs',
+                'JTs',
+                'T9s'
+            ])]
+        ])],
+        [Seats.BB, new Map([
+            [Actions.Raise, new Set([
+                'AA', 'KK',
+                'AKs'
+            ])],
+            [Actions.RaiseCall, new Set([
+                'QQ',
+                'AKo'
+            ])],
+            [Actions.RaiseFold, new Set([
+                'A9s', 'A5s', 'A4s',
+                'AQo'
+            ])],
+            [Actions.Call, new Set([
+                'JJ', 'TT', '99', '88', '77', '66',
+                'AQs', 'AJs', 'ATs',
+                'KQs', 'KJs',
+                'QJs',
+                'JTs',
+                'T9s'
+            ])]
+        ])],
+        [Seats.HJ, new Map([
+            [Actions.Raise, new Set([
+                'AA', 'KK',
+                'AKs', 'ATs', 'A5s'
+            ])],
+            [Actions.RaiseCall, new Set([
+                'QQ',
+                'AKo'
+            ])],
+            [Actions.RaiseFold, new Set([
+                'A4s',
+                'AQo'
+            ])],
+            [Actions.Call, new Set([
+                'JJ', 'TT', '99', '88', '77',
+                'AQs', 'AJs',
+                'KQs',
+                'QJs',
+                'JTs'
+            ])]
+        ])],
+        [Seats.CO, new Map([
+            [Actions.Raise, new Set([
+                'AA', 'KK',
+                'ATs', 'ATs', 'A5s'
+            ])],
+            [Actions.RaiseCall, new Set([
+                'QQ',
+                'AKo'
+            ])],
+            [Actions.RaiseFold, new Set([
+                'A4s',
+                'AQo'
+            ])],
+            [Actions.Call, new Set([
+                'JJ', 'TT', '99', '88', '77',
+                'AQs', 'AJs',
+                'KQs',
+                'QJs',
+                'JTs'
+            ])]
+        ])],
+        [Seats.BTN, new Map([
+            [Actions.Raise, new Set([
+                'AA', 'KK',
+                'ATs', 'ATs', 'A5s'
+            ])],
+            [Actions.RaiseCall, new Set([
+                'QQ',
+                'AKo'
+            ])],
+            [Actions.RaiseFold, new Set([
+                'A4s',
+                'AQo'
+            ])],
+            [Actions.Call, new Set([
+                'JJ', 'TT', '99', '88', '77',
+                'AQs', 'AJs',
+                'KQs', 'KJs',
+                'QJs',
+                'JTs',
+                'T9s'
+            ])]
+        ])]
+    ])],
+    [Seats.HJ, new Map([
+        [Seats.SB, new Map([
+            [Actions.Raise, new Set([
+                'AA', 'KK', 'QQ',
+                'AKs', 'A5s', 'A4s',
+                'AKo'
+            ])],
+            [Actions.RaiseCall, new Set([
+                'JJ',
+                'A9s', 'A8s', 'A3s'
+            ])],
+            [Actions.Call, new Set([
+                'TT', '99', '88', '77', '66',
+                'AQs', 'AJs', 'ATs',
+                'KQs', 'KJs', 'KTs',
+                'QJs', 'QTs',
+                'JTs',
+                'T9s',
+                'AQo'
+            ])]
+        ])],
+        [Seats.BB, new Map([
+            [Actions.Raise, new Set([
+                'AA', 'KK', 'QQ',
+                'AKs', 'A5s', 'A4s',
+                'AKo'
+            ])],
+            [Actions.RaiseCall, new Set([
+                'JJ',
+                'A9o', 'A8s', 'A3s'
+            ])],
+            [Actions.Call, new Set([
+                'TT', '99', '88', '77', '66',
+                'AQs', 'AJs', 'ATs',
+                'KQs', 'KJs', 'KTs',
+                'QJs', 'QTs',
+                'JTs',
+                'T9s',
+                'AQo'
+            ])]
+        ])],
+        [Seats.CO, new Map([
+            [Actions.Raise, new Set([
+                'AA', 'KK', 'QQ',
+                'AKs', 'A5s', 'A4s',
+                'AKo'
+            ])],
+            [Actions.RaiseCall, new Set([
+                'JJ',
+                'A9s', 'A8s', 'A3s'
+            ])],
+            [Actions.Call, new Set([
+                'TT', '99', '88', '77', '66',
+                'AQs', 'AJs', 'ATs',
+                'KQs', 'KJs',
+                'QJs',
+                'JTs',
+                'T9s',
+                'AQo'
+            ])]
+        ])],
+        [Seats.BTN, new Map([
+            [Actions.Raise, new Set([
+                'AA', 'KK', 'QQ',
+                'AKs', 'A5s', 'A4s',
+                'AKo'
+            ])],
+            [Actions.RaiseCall, new Set([
+                'JJ',
+                'A9s', 'A8s', 'A3s'
+            ])],
+            [Actions.Call, new Set([
+                'JJ', 'TT', '99', '88', '77', '66',
+                'AQs', 'AJs', 'ATs',
+                'KQs', 'KJs', 'KTs',
+                'QJs', 'QTs',
+                'JTs',
+                'T9s',
+                'AQo'
+            ])]
+        ])]
+    ])],
+    [Seats.CO, new Map([
+        [Seats.SB, new Map([
+            [Actions.Raise, new Set([
+                'AA', 'KK', 'QQ',
+                'AKs', 'A5s', 'A4s', 'A3s', 'A2s',
+                'AKo'
+            ])],
+            [Actions.RaiseCall, new Set([
+                'JJ'
+            ])],
+            [Actions.RaiseFold, new Set([
+                'A7s', 'A6s'
+            ])],
+            [Actions.Call, new Set([
+                'TT', '99', '88', '77', '66', '55',
+                'AQs', 'AJs', 'ATs', 'A9s', 'A8s',
+                'KQs', 'KJs', 'KTs',
+                'QJs', 'QTs',
+                'JTs',
+                'T9s',
+                '98s',
+                '87s',
+                'AQo'
+            ])]
+        ])],
+        [Seats.BB, new Map([
+            [Actions.Raise, new Set([
+                'AA', 'KK', 'QQ',
+                'AKs', 'A5s', 'A4s', 'A3s', 'A2s',
+                'AKo'
+            ])],
+            [Actions.RaiseCall, new Set([
+                'JJ'
+            ])],
+            [Actions.RaiseFold, new Set([
+                'A7s', 'A6s'
+            ])],
+            [Actions.Call, new Set([
+                'TT', '99', '88', '77', '66', '55',
+                'AQs', 'AJs', 'ATs', 'A9s', 'A8s',
+                'KQs', 'KJs', 'KTs',
+                'QJs', 'QTs',
+                'JTs',
+                'T9s',
+                '98s',
+                '87s',
+                'AQo'
+            ])]
+        ])],
+        [Seats.BTN, new Map([
+            [Actions.Raise, new Set([
+                'AA', 'KK', 'QQ',
+                'AKs', 'A5s', 'A4s', 'A3s', 'A2s',
+                'AKo'
+            ])],
+            [Actions.RaiseCall, new Set([
+                'JJ'
+            ])],
+            [Actions.RaiseFold, new Set([
+                'A7s', 'A6s'
+            ])],
+            [Actions.Call, new Set([
+                'TT', '99', '88', '77', '66',
+                'AQs', 'AJs', 'ATs', 'A9s', 'A8s',
+                'KQs', 'KJs', 'KTs',
+                'QJs', 'QTs',
+                'JTs',
+                'T9s',
+                '98s',
+                'AQo'
+            ])]
+        ])]
+    ])],
+    [Seats.BTN, new Map([
+        [Seats.SB, new Map([
+            [Actions.Raise, new Set([
+                'AA', 'KK', 'QQ', 'JJ',
+                'AKs', 'A5s', 'A4s', 'A3s', 'A2s',
+                'AKo'
+            ])],
+            [Actions.RaiseCall, new Set([
+                'K8s', 'K7s', 'K6s'
+            ])],
+            [Actions.Call, new Set([
+                'TT', '99', '88', '77', '66', '55', '44', '33',
+                'AQs', 'AJs', 'ATs', 'A9s', 'A8s', 'A7s', 'A6s',
+                'KQs', 'KJs', 'KTs', 'K9s',
+                'QJs', 'QTs', 'Q9s',
+                'JTs', 'J9s',
+                'T9s', 'T8s',
+                '98s', '97s',
+                '87s',
+                '76s',
+                '65s',
+                '54s',
+                'AQo', 'AJo', 'ATo',
+                'KQo', 'KJo',
+                'QJo'
+            ])]
+        ])],
+        [Seats.BB, new Map([
+            [Actions.Raise, new Set([
+                'AA', 'KK', 'QQ', 'JJ',
+                'AKs', 'A5s', 'A4s', 'A3s', 'A2s',
+                'AKo'
+            ])],
+            [Actions.RaiseCall, new Set([
+                'K8s', 'K7s', 'K6s'
+            ])],
+            [Actions.Call, new Set([
+                'TT', '99', '88', '77', '66', '55', '44', '33',
+                'AQs', 'AJs', 'ATs', 'A9s', 'A8s', 'A7s', 'A6s',
+                'KQs', 'KJs', 'KTs', 'K9s',
+                'QJs', 'QTs', 'Q9s',
+                'JTs', 'J9s',
+                'T9s', 'T8s',
+                '98s', '97s',
+                '87s',
+                '76s',
+                '65s',
+                '54s',
+                'AQo', 'AJo', 'ATo',
+                'KQo', 'KJo',
+                'QJo'
+            ])]
+        ])]
+    ])]
+]);
+
 /////
 
 const allActions = [
