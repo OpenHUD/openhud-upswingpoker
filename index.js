@@ -1982,7 +1982,23 @@ const errors = {
     'https://www.openhud.io/errors/invalid-data': {
         status: 400,
         title: 'Invalid Data'
+    },
+    'https://www.openhud.io/errors/internal': {
+        status: 500,
+        title: 'Internal'
     }
+};
+
+const translateException = e => {
+    const error = errors[e.type] || errors['https://www.openhud.io/errors/internal'];
+    return {
+        status: error.status,
+        body: {
+            type: e.type,
+            title: error.title,
+            detail: e.detail || e.message
+        }
+    };
 };
 
 
@@ -1994,13 +2010,8 @@ app.post('/', (request, response) => {
 
         response.status(200).send(tip);
     } catch (e) {
-        const error = errors[e.type];
-        const result = {
-            type: e.type,
-            title: error.title,
-            detail: e.detail
-        };
-        response.status(error.status).send(result);
+        const error = translateException(e);
+        response.status(error.status).send(error.body);
     }
 });
 
