@@ -1910,27 +1910,6 @@ const getStrategicSituation = (seats, bb) => {
         .value();
 };
 
-const firstRaiserBefore = (seats, bb, index) => {
-    if (index > 1) {
-        for (let i = 2; i < index; ++i) {
-            const seat = seats[i];
-            if (seat.pot > bb) {
-                return i;
-            }
-        }
-        return -1;
-    } else {
-        const firstNonBlindRaiser = firstRaiserBefore(seats, bb, seats.length);
-        if (firstNonBlindRaiser) {
-            return firstNonBlindRaiser
-        } else if (index === 0) {
-            return -1;
-        } else {
-            return seats[0].pot > bb ? 0 : -1;
-        }
-    }
-};
-
 const generateTip = (game, bb, seats, community) => {
     const tip = { players: {} };
 
