@@ -1944,7 +1944,7 @@ const generateTip = (game, bb, seats, community) => {
                     break;
                 case 1: // one bet
                     {
-                        if (!sitation[0].includes(actor)) {
+                        if (!situation[0].includes(actor)) {
                             const rfi = situation[0][0];
                             const action = getRaiseAction(rfi, actor, myHandRep);
                             if (action) {
