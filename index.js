@@ -1935,17 +1935,21 @@ const generateTip = (game, bb, seats, community) => {
 
             switch(situation.length) {
                 case 0: // no bets
-                    const firstInAction = getFirstInAction(actor, myHandRep);
-                    if (firstInAction) {
-                        tip.players[mySeat.playerName] = `${myHandRep} should ${firstInAction} if first in.`;
+                    {
+                        const action = getFirstInAction(actor, myHandRep);
+                        if (action) {
+                            tip.players[mySeat.playerName] = `${myHandRep} (${actor}) should ${action} first in.`;
+                        }
                     }
                     break;
                 case 1: // one bet
-                    if (!sitation[0].includes(actor)) {
-                        const rfi = situation[0][0];
-                        const raiseAction = getRaiseAction(rfi, actor, myHandRep);
-                        if (raiseAction) {
-                            tip.players[mySeat.playerName] = `${myHandRep} should ${raiseAction} when raised like this.`;
+                    {
+                        if (!sitation[0].includes(actor)) {
+                            const rfi = situation[0][0];
+                            const action = getRaiseAction(rfi, actor, myHandRep);
+                            if (action) {
+                                tip.players[mySeat.playerName] = `${myHandRep} (${actor}) should ${action} facing ${rfi} open.`;
+                            }
                         }
                     }
                     break;
