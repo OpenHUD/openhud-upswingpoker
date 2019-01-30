@@ -1851,30 +1851,17 @@ const PlayersToSeats = new Map([
     [9, [Seats.SB, Seats.BB, Seats.UTG, Seats.UTG1, Seats.UTG2, Seats.LJ, Seats.HJ, Seats.CO, Seats.BTN]],
 ]);
 
-const getFirstInAction = (players, position, handRep) => {
-    const seats = PlayersToSeats.get(players)
-    if (seats) {
-        const seat = seats[position];
-        const table = FirstIn.get(seat);
-        if (table) {
-            return getAction(table, handRep);
-        }
-    }
-    
-    return null;
+const getFirstInAction = (seat, handRep) => {
+    const table = FirstIn.get(seat);
+    return table ? getAction(table, handRep) : null;
 };
 
-const getRaiseAction = (players, position, raiserPosition, handRep) => {
-    const seats = PlayersToSeats.get(players);
-    if (seats) {
-        const seat = seats[position];
-        const tables = Raise.get(seat);
-        if (tables) {
-            const raiserSeat = seats[raiserPosition];
-            const table = tables.get(raiserSeat);
-            if (table) {
-                return getAction(table, handRep);
-            }
+const getRaiseAction = (rfi, seat, handRep) => {
+    const tables = Raise.get(seat);
+    if (tables) {
+        const table = tables.get(rfi);
+        if (table) {
+            return getAction(table, handRep);
         }
     }
 
@@ -1885,19 +1872,42 @@ const getRaiseAction = (players, position, raiserPosition, handRep) => {
 
 const { Games, Bets } = require('@openhud/api');
 const { represent } = require('@openhud/helpers');
+const _ = require('lodash');
+
+const rotateLeft = (array, num) => {
+    if (array.length > 0) {
+        const realNum = num % array.length;
+        return [...array.slice(realNum, array.length), ...array.slice(0, realNum)];
+    } else {
+        return [];
+    }
+};
 
 const reorderBtnLast = seats => {
-    const reordered = [];
-
     const btnSeatId = seats.findIndex(seat => seat.isButton);
-    for (let i = btnSeatId + 1; i < seats.length; ++i) {
-        reordered.push(seats[i]);
-    }
-    for (let i = 0; i <= btnSeatId; ++i) {
-        reordered.push(seats[i]);
-    }
+    return rotateLeft(seats, btnSeatId + 1);
+};
 
-    return reordered;
+const getStrategicSituation = (seats, bb) => {
+    const seatsMap = PlayersToSeats.get(seats.length);
+
+    const myIndex = seats.findIndex(seat => seat.isMe);
+
+    const playersInfo = seats.map((seat, index) => ({ pot: seat.pot, isFolded: seat.isFolded, seat: seatsMap[index] }));
+    const playersInfoWithMeLast = rotateLeft(playersInfo, myIndex + 1);
+
+    const potToPlayersInfo = _(playersInfoWithMeLast)
+        .reject('isFolded')
+        .reject(playerInfo => playerInfo.pot <= bb)
+        .groupBy('pot')
+        .value();
+    
+    return _(potToPlayersInfo)
+        .keys()
+        .sortBy(pot => parseFloat(pot))
+        .map(pot => potToPlayersInfo[pot])
+        .map(playerInfos => playerInfos.map(playerInfo => playerInfo.seat))
+        .value();
 };
 
 const firstRaiserBefore = (seats, bb, index) => {
@@ -1941,17 +1951,27 @@ const generateTip = (game, bb, seats, community) => {
             }
             const myHandRep = represent({ hand: myHand });
 
-            const raiserPosition = firstRaiserBefore(seats, bb, index);
-            if (raiserPosition === -1) {
-                const firstInAction = getFirstInAction(players, index, myHandRep);
-                if (firstInAction) {
-                    tip.players[mySeat.playerName] = `${myHandRep} should ${firstInAction} if first in.`;
-                }
-            } else {
-                const raiseAction = getRaiseAction(players, index, raiserPosition, myHandRep);
-                if (raiseAction) {
-                    tip.players[mySeat.playerName] = `${myHandRep} should ${raiseAction} when raised like this.`;
-                }
+            const situation = getStrategicSituation(seats, bb);
+            const actor = PlayersToSeats.get(players)[index];
+
+            switch(situation.length) {
+                case 0: // no bets
+                    const firstInAction = getFirstInAction(actor, myHandRep);
+                    if (firstInAction) {
+                        tip.players[mySeat.playerName] = `${myHandRep} should ${firstInAction} if first in.`;
+                    }
+                    break;
+                case 1: // one bet
+                    if (!sitation[0].includes(actor)) {
+                        const rfi = situation[0][0];
+                        const raiseAction = getRaiseAction(rfi, actor, myHandRep);
+                        if (raiseAction) {
+                            tip.players[mySeat.playerName] = `${myHandRep} should ${raiseAction} when raised like this.`;
+                        }
+                    }
+                    break;
+                default:
+                    break;
             }
         }
     }
