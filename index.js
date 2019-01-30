@@ -1968,11 +1968,11 @@ const generateTip = (game, bb, seats, community) => {
                 case 2: // two bets
                     {
                         if (!situation[1].includes(actor)) {
-                            const raiser = situation[0][0];
+                            const raiser = situation[1][0];
                             if (situation[0].includes(actor)) {
                                 const action = getThreeBetAction(raiser, actor, myHandRep);
                                 if (action) {
-                                    tip.players[mySeat.playerName] = `${myHandRep} (${actor} open) should ${action} facing ${rfi} raise.`;
+                                    tip.players[mySeat.playerName] = `${myHandRep} (${actor} open) should ${action} facing ${raiser} raise.`;
                                 }
                             }
                         }
