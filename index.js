@@ -1868,6 +1868,18 @@ const getRaiseAction = (rfi, seat, handRep) => {
     return null;
 };
 
+const getThreeBetAction = (raiser, seat, handRep) => {
+    const tables = ThreeBet.get(seat);
+    if (tables) {
+        const table = tables.get(raiser);
+        if (table) {
+            return getAction(table, handRep);
+        }
+    }
+
+    return null;
+};
+
 //////////////////////////////////////////////////
 
 const { Games, Bets } = require('@openhud/api');
@@ -1953,6 +1965,19 @@ const generateTip = (game, bb, seats, community) => {
                         }
                     }
                     break;
+                case 2: // two bets
+                    {
+                        if (!situation[1].includes(actor)) {
+                            const raiser = situation[0][0];
+                            if (situation[0].includes(actor)) {
+                                const action = getThreeBetAction(raiser, actor, myHandRep);
+                                if (action) {
+                                    tip.players[mySeat.playerName] = `${myHandRep} (${actor} open) should ${action} facing ${rfi} raise.`;
+                                }
+                            }
+                        }
+                    }
+                    break;                    
                 default:
                     break;
             }
