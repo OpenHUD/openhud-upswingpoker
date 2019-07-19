@@ -1925,7 +1925,7 @@ const getStrategicSituation = (seats, bb) => {
 const generateTip = (game, bb, seats, community) => {
     const tip = { players: {} };
 
-    if (game.type === Games.TexasHoldem && game.bet === Bets.NoLimit) {
+    if (game.type === Games.TexasHoldem && game.bet === Bets.NoLimit && community.length === 0) {
         seats = reorderBtnLast(seats);
 
         const players = seats.length;
