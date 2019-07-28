@@ -2030,6 +2030,7 @@ const translateException = e => {
 app.post('/', (request, response) => {
     try {
         const { game, bb, seats, community } = request.body;
+        console.log(JSON.stringify({game, bb, seats, community}));
 
         const tip = generateTip(game, bb, seats, community);
 
