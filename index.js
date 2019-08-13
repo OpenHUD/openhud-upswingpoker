@@ -2026,9 +2026,18 @@ const translateException = e => {
     };
 };
 
+const axios = require('axios');
+const { DEBUG_URL } = process.env;
+const debug = (obj) => {
+    if (DEBUG_URL) {
+        axios.post(DEBUG_URL, obj);
+    }
+};
+
 
 app.post('/', (request, response) => {
     try {
+        debug(request.body);
         const { game, bb, seats, community } = request.body;
 
         const tip = generateTip(game, bb, seats, community);
