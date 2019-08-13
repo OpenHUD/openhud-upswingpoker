@@ -9,6 +9,6 @@
       "firebase-functions": "^2.0.5",
       "lodash": "^4.17.11",
       "@openhud/api": "^1.0.0",
-      "@openhud/helpers": "^1.0.4"
+      "@openhud/helpers": "^1.0.5"
   }
 }
