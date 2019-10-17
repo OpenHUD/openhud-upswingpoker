@@ -397,7 +397,8 @@ const Raise = new Map([
                 'QJs',
                 'JTs',
                 'T9s',
-                '98s'
+                '98s',
+                'AKo, AQo'
             ])],
             [Actions.RaiseCall, new Set([
                 '88', '77', '66', '55', '44',
