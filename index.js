@@ -1,15 +1,5 @@
 // Based on https://play.google.com/store/apps/details?id=com.app.upswingpoker (onlinecashrange)
-const Seats = {
-    SB: 'sb',
-    BB: 'bb',
-    UTG: 'utg',
-    UTG1: 'utg+1',
-    UTG2: 'utg+2',
-    LJ: 'lojack',
-    HJ: 'hijack',
-    CO: 'cutoff',
-    BTN: 'button'
-};
+const { Seats } = require('@openhud/helpers');
 
 const Actions = {
     Raise: 'raise',
